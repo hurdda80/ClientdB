@@ -7,6 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import static dhurd.c195.clientdb.helper.JDBC.connection;
 
 public class Main extends Application {
     @Override
@@ -20,6 +26,17 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         JDBC.openConnection();
-        launch();
+       // launch();
+
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM CUSTOMERS");
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
