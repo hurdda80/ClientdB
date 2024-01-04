@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="created log-in screen and empty conroller">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/DAO/CustomerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/dBStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="created PreparedStatement class">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Login.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Login_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Login_fr_FR.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,13 +106,22 @@
       <option name="project" value="LOCAL" />
       <updated>1703616757399</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="created PreparedStatement class">
+      <option name="closed" value="true" />
+      <created>1703786865578</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703786865578</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="gettin started" />
     <MESSAGE value="created log-in screen and empty conroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="created log-in screen and empty conroller" />
+    <MESSAGE value="created PreparedStatement class" />
+    <option name="LAST_COMMIT_MESSAGE" value="created PreparedStatement class" />
   </component>
 </project>

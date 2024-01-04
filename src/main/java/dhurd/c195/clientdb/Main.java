@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 400);
         stage.setTitle("Log-In");
         stage.setScene(scene);
         stage.show();
@@ -26,7 +26,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         JDBC.openConnection();
-       // launch();
+        launch();
 
 
         try {
