@@ -1,11 +1,16 @@
 package dhurd.c195.clientdb.controllers;
 
+import dhurd.c195.clientdb.Main;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.Locale;
@@ -43,6 +48,13 @@ public class LogInController implements Initializable {
 
 
     }
-    public void loginAttempt(ActionEvent actionEvent) {
+    public void loginAttempt(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        Stage stage = (Stage) loginScreenLbl.getScene().getWindow();
+        stage.setTitle("Appointments");
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
