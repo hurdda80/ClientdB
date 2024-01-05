@@ -16,7 +16,7 @@
    <children>
       <HBox prefHeight="72.0" prefWidth="400.0">
          <children>
-            <Label fx:id="addCustLbl" prefHeight="72.0" prefWidth="175.0" text="Edit Customer">
+            <Label fx:id="upCustLbl" prefHeight="72.0" prefWidth="175.0" text="Edit Customer">
                <font>
                   <Font size="15.0" />
                </font>
@@ -41,17 +41,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="addCustIDLbl" text="ID">
+            <Label fx:id="upCustIDLbl" text="ID">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustNameLbl" text="Name" GridPane.rowIndex="1">
+            <Label fx:id="upCustNameLbl" text="Name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustPhoneLbl" text="Phone Number" GridPane.rowIndex="2">
+            <Label fx:id="upCustPhoneLbl" text="Phone Number" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -59,43 +59,43 @@
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustAddressLbl" text="Street Address" GridPane.rowIndex="3">
+            <Label fx:id="upCustAddressLbl" text="Street Address" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustCountryLbl" text="Country" GridPane.rowIndex="4">
+            <Label fx:id="upCustCountryLbl" text="Country" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustStateLbl" text="State/Province" GridPane.rowIndex="5">
+            <Label fx:id="upCustStateLbl" text="State/Province" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="addCustPostalLbl" text="Postal Code" GridPane.rowIndex="6">
+            <Label fx:id="upCustPostalLbl" text="Postal Code" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="addCustIDTxt" disable="true" promptText="auto-generated" GridPane.columnIndex="1" />
-            <TextField fx:id="addCustNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="addCustPhoneTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="addCustAddressTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="addCustCountryBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="addCustStateBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="upCustIDTxt" disable="true" promptText="auto-generated" GridPane.columnIndex="1" />
+            <TextField fx:id="upCustNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="upCustPhoneTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="upCustPostalTxt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="upCustAddressTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="upCustCountryBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="upCustStateBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="1.0" layoutY="393.0" prefHeight="100.0" prefWidth="400.0">
          <children>
-            <Button fx:id="addCustSaveBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="69.0" text="Save">
+            <Button fx:id="upCustSaveBtn" mnemonicParsing="false" onAction="#updateCustSave" prefHeight="35.0" prefWidth="69.0" text="Save">
                <HBox.margin>
                   <Insets left="120.0" right="25.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addCustCancelBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="69.0" text="Cancel">
+            <Button fx:id="upCustCancelBtn" mnemonicParsing="false" onAction="#updateCustCancel" prefHeight="35.0" prefWidth="69.0" text="Cancel">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>

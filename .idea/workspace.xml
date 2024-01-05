@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Created Main fxml and controller">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddCustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateCustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Appointment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Country.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Division.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/AddCustomer.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/UpdateCustomer.fxml" afterDir="false" />
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Created all classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CustomerQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CustomerQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/AddCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/AddCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/UpdateCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dhurd/c195/clientdb/UpdateCustomer.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704408044832</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created all classes">
+      <option name="closed" value="true" />
+      <created>1704476151901</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704476151901</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +146,7 @@
     <MESSAGE value="created PreparedStatement class" />
     <MESSAGE value="added French and English lang to Login page" />
     <MESSAGE value="Created Main fxml and controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Main fxml and controller" />
+    <MESSAGE value="Created all classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created all classes" />
   </component>
 </project>
