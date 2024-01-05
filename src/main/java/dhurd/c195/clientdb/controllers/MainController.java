@@ -1,8 +1,14 @@
 package dhurd.c195.clientdb.controllers;
 
+import dhurd.c195.clientdb.Main;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainController {
     public HBox upcomingLbl;
@@ -51,10 +57,22 @@ public class MainController {
     public void deleteAppt(ActionEvent actionEvent) {
     }
 
-    public void newCustomer(ActionEvent actionEvent) {
+    public void newCustomer(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddCustomer.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+        Stage stage = (Stage) apptTable.getScene().getWindow();
+        stage.setTitle("Add Customer");
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void updateCustomer(ActionEvent actionEvent) {
+    public void updateCustomer(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UpdateCustomer.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+        Stage stage = (Stage) apptTable.getScene().getWindow();
+        stage.setTitle("Edit Customer");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void deleteCustomer(ActionEvent actionEvent) {
