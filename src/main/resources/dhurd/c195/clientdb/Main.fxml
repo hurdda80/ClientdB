@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhurd.c195.clientdb.controllers.MainController">
    <children>
-      <HBox fx:id="upcomingLbl" prefHeight="63.0" prefWidth="800.0">
+      <HBox fx:id="upcomingLbl" prefHeight="63.0" prefWidth="900.0">
          <children>
             <Label prefHeight="63.0" prefWidth="290.0" text="Upcoming Appointments">
                <font>
@@ -24,13 +24,18 @@
                   <Insets left="30.0" right="250.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="weekRadio" mnemonicParsing="false" onAction="#weekView" selected="true" text="This Week">
+            <RadioButton fx:id="allRadio" mnemonicParsing="false" selected="true" text="All">
                <HBox.margin>
                   <Insets right="30.0" top="10.0" />
                </HBox.margin>
                <toggleGroup>
                   <ToggleGroup fx:id="appointment" />
                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="weekRadio" mnemonicParsing="false" onAction="#weekView" text="This Week" toggleGroup="$appointment">
+               <HBox.margin>
+                  <Insets right="30.0" top="10.0" />
+               </HBox.margin>
             </RadioButton>
             <RadioButton fx:id="monthRadio" mnemonicParsing="false" onAction="#monthView" text="This Month" toggleGroup="$appointment">
                <HBox.margin>

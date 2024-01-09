@@ -1,7 +1,9 @@
 package dhurd.c195.clientdb.controllers;
 
 import dhurd.c195.clientdb.Main;
+import dhurd.c195.clientdb.helper.AppointmentQuery;
 import dhurd.c195.clientdb.helper.CustomerQuery;
+import dhurd.c195.clientdb.models.Appointment;
 import dhurd.c195.clientdb.models.Customer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,6 +54,7 @@ public class MainController implements Initializable {
     public Button exitBtn;
 
     static ObservableList<Customer> allCustomers;
+    static ObservableList<Appointment> allAppointments;
     public TableColumn custCountryCol;
 
     @Override
@@ -67,6 +70,22 @@ public class MainController implements Initializable {
             custStateCol.setCellValueFactory(new PropertyValueFactory<>("division"));
             custPostalCol.setCellValueFactory(new PropertyValueFactory<>("postal"));
             custCountryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
+
+            allAppointments = AppointmentQuery.getAllAppointments();
+            apptTable.setItems(allAppointments);
+            apptIdCol.setCellValueFactory(new PropertyValueFactory<>("apptID"));
+            apptTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+            apptDescripCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            apptLocCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+            apptTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            apptStartCol.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+            apptEndCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+            apptContactCol.setCellValueFactory(new PropertyValueFactory<>("contactName"));
+            apptCustIdCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+            apptUserIdCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
+
+
+
 
     } catch (SQLException e) {
         throw new RuntimeException(e);
