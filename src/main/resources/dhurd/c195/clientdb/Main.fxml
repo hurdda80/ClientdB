@@ -85,10 +85,11 @@
         <columns>
           <TableColumn fx:id="custIdCol" prefWidth="41.333313941955566" text="ID" />
           <TableColumn fx:id="custNameCol" prefWidth="149.99993515014648" text="Name" />
-            <TableColumn fx:id="custPhoneCol" prefWidth="138.66676330566406" text="Phone Number" />
-            <TableColumn fx:id="custAddressCol" prefWidth="256.6665954589844" text="Street Address" />
-            <TableColumn fx:id="custStateCol" prefWidth="148.6666259765625" text="State/Province" />
-            <TableColumn fx:id="custPostalCol" minWidth="8.0" prefWidth="139.3333740234375" text="Postal Code" />
+            <TableColumn fx:id="custPhoneCol" prefWidth="108.00007629394531" text="Phone Number" />
+            <TableColumn fx:id="custAddressCol" prefWidth="192.00009155273438" text="Street Address" />
+            <TableColumn fx:id="custStateCol" prefWidth="152.66656494140625" text="State/Province" />
+            <TableColumn fx:id="custPostalCol" minWidth="8.0" prefWidth="112.0" text="Postal Code" />
+            <TableColumn fx:id="custCountryCol" prefWidth="121.9998779296875" text="Country" />
         </columns>
       </TableView>
       <HBox layoutX="14.0" layoutY="479.0" prefHeight="40.0" prefWidth="875.0">

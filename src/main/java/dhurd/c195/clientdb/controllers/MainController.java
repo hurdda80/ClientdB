@@ -1,16 +1,25 @@
 package dhurd.c195.clientdb.controllers;
 
 import dhurd.c195.clientdb.Main;
+import dhurd.c195.clientdb.helper.CustomerQuery;
+import dhurd.c195.clientdb.models.Customer;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
     public HBox upcomingLbl;
     public RadioButton weekRadio;
     public RadioButton monthRadio;
@@ -41,6 +50,28 @@ public class MainController {
     public Button custDelBtn;
     public Button reportsBtn;
     public Button exitBtn;
+
+    static ObservableList<Customer> allCustomers;
+    public TableColumn custCountryCol;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resources) {
+
+        try {
+            allCustomers = CustomerQuery.getAllCustomers();
+            custTable.setItems(allCustomers);
+            custIdCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+            custNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+            custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+            custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+            custStateCol.setCellValueFactory(new PropertyValueFactory<>("division"));
+            custPostalCol.setCellValueFactory(new PropertyValueFactory<>("postal"));
+            custCountryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
+
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+        }
+    }
 
     public void weekView(ActionEvent actionEvent) {
     }
