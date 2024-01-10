@@ -24,7 +24,7 @@
                   <Insets left="30.0" right="250.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="allRadio" mnemonicParsing="false" selected="true" text="All">
+            <RadioButton fx:id="allRadio" mnemonicParsing="false" onAction="#allView" selected="true" text="All">
                <HBox.margin>
                   <Insets right="30.0" top="10.0" />
                </HBox.margin>
@@ -47,15 +47,15 @@
       <TableView fx:id="apptTable" layoutX="14.0" layoutY="63.0" prefHeight="173.0" prefWidth="875.0">
         <columns>
           <TableColumn fx:id="apptIdCol" prefWidth="42.0" text="ID" />
-          <TableColumn fx:id="apptTitleCol" prefWidth="78.66668701171875" text="Title" />
-            <TableColumn fx:id="apptDescripCol" prefWidth="101.33331298828125" text="Description" />
-            <TableColumn fx:id="apptLocCol" prefWidth="98.6666259765625" text="Location" />
-            <TableColumn fx:id="apptTypeCol" prefWidth="92.666748046875" text="Type" />
-            <TableColumn fx:id="apptStartCol" prefWidth="109.333251953125" text="Start Date/Time" />
-            <TableColumn fx:id="apptEndCol" prefWidth="100.0" text="End Date/Time" />
-            <TableColumn fx:id="apptContactCol" prefWidth="128.6666259765625" text="Contact" />
-            <TableColumn fx:id="apptCustIdCol" minWidth="1.9998779296875" prefWidth="63.333251953125" text="Cust ID" />
-            <TableColumn fx:id="apptUserIdCol" prefWidth="62.0001220703125" text="User ID" />
+          <TableColumn fx:id="apptTitleCol" prefWidth="60.0" text="Title" />
+            <TableColumn fx:id="apptDescripCol" prefWidth="107.33330535888672" text="Description" />
+            <TableColumn fx:id="apptLocCol" prefWidth="98.66668701171875" text="Location" />
+            <TableColumn fx:id="apptTypeCol" prefWidth="106.6666259765625" text="Type" />
+            <TableColumn fx:id="apptStartCol" prefWidth="119.99990844726562" text="Start Date/Time" />
+            <TableColumn fx:id="apptEndCol" prefWidth="119.3333740234375" text="End Date/Time" />
+            <TableColumn fx:id="apptContactCol" prefWidth="125.333251953125" text="Contact" />
+            <TableColumn fx:id="apptCustIdCol" minWidth="1.9998779296875" prefWidth="51.333251953125" text="Cust ID" />
+            <TableColumn fx:id="apptUserIdCol" prefWidth="49.33349609375" text="User ID" />
         </columns>
       </TableView>
       <HBox layoutX="14.0" layoutY="236.0" prefHeight="40.0" prefWidth="875.0">

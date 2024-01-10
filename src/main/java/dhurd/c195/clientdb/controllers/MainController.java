@@ -55,7 +55,9 @@ public class MainController implements Initializable {
 
     static ObservableList<Customer> allCustomers;
     static ObservableList<Appointment> allAppointments;
+    static ObservableList<Appointment> appointments;
     public TableColumn custCountryCol;
+    public RadioButton allRadio;
 
     @Override
     public void initialize(URL url, ResourceBundle resources) {
@@ -92,10 +94,21 @@ public class MainController implements Initializable {
         }
     }
 
-    public void weekView(ActionEvent actionEvent) {
+    public void weekView(ActionEvent actionEvent) throws SQLException {
+        appointments = AppointmentQuery.getWeekAppointments();
+        apptTable.setItems(appointments);
+        apptTable.refresh();
     }
 
-    public void monthView(ActionEvent actionEvent) {
+    public void monthView(ActionEvent actionEvent) throws SQLException {
+        appointments = AppointmentQuery.getMonthAppointments();
+        apptTable.setItems(appointments);
+        apptTable.refresh();
+    }
+    public void allView(ActionEvent actionEvent) throws SQLException {
+        appointments = AppointmentQuery.getAllAppointments();
+        apptTable.setItems(appointments);
+        apptTable.refresh();
     }
 
     public void newAppt(ActionEvent actionEvent) {
@@ -133,4 +146,6 @@ public class MainController implements Initializable {
 
     public void exitMain(ActionEvent actionEvent) {
     }
+
+
 }

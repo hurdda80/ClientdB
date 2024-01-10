@@ -30,4 +30,11 @@ public class AddCustomerController {
 
     public void addCustCancel(ActionEvent actionEvent) {
     }
+
+    public void selectCountry(ActionEvent actionEvent) {
+        
+    }
+
+    public void selectDivision(ActionEvent actionEvent) {
+    }
 }

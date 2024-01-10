@@ -84,8 +84,8 @@
             <TextField fx:id="addCustPhoneTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="addCustPostalTxt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="addCustAddressTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="addCustCountryBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="addCustStateBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="addCustCountryBox" onAction="#selectCountry" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="addCustStateBox" onAction="#selectDivision" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="1.0" layoutY="393.0" prefHeight="100.0" prefWidth="400.0">
