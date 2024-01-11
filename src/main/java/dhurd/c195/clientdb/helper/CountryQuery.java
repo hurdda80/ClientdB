@@ -1,5 +1,5 @@
 package dhurd.c195.clientdb.helper;
-
+import dhurd.c195.clientdb.controllers.*;
 import dhurd.c195.clientdb.models.Country;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,4 +24,7 @@ public class CountryQuery {
         }
         return allCountries;
     }
+
+
+
 }

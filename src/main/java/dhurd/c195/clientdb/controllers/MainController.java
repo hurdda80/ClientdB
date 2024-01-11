@@ -1,9 +1,10 @@
 package dhurd.c195.clientdb.controllers;
-
+import dhurd.c195.clientdb.helper.*;
 import dhurd.c195.clientdb.Main;
 import dhurd.c195.clientdb.helper.AppointmentQuery;
 import dhurd.c195.clientdb.helper.CustomerQuery;
 import dhurd.c195.clientdb.models.Appointment;
+import dhurd.c195.clientdb.models.Country;
 import dhurd.c195.clientdb.models.Customer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,6 +57,7 @@ public class MainController implements Initializable {
     static ObservableList<Customer> allCustomers;
     static ObservableList<Appointment> allAppointments;
     static ObservableList<Appointment> appointments;
+
     public TableColumn custCountryCol;
     public RadioButton allRadio;
 
@@ -120,13 +122,15 @@ public class MainController implements Initializable {
     public void deleteAppt(ActionEvent actionEvent) {
     }
 
-    public void newCustomer(ActionEvent actionEvent) throws IOException {
+    public void newCustomer(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddCustomer.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 500);
         Stage stage = (Stage) apptTable.getScene().getWindow();
         stage.setTitle("Add Customer");
         stage.setScene(scene);
         stage.show();
+        ObservableList<Country> allCountries = CountryQuery.getAllCountries();
+        System.out.println (allCountries.size());
     }
 
     public void updateCustomer(ActionEvent actionEvent) throws IOException {

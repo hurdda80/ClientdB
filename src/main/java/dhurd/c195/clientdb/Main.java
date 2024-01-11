@@ -29,14 +29,7 @@ public class Main extends Application {
         launch();
 
 
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM CUSTOMERS");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+
     }
 }
