@@ -1,6 +1,8 @@
 package dhurd.c195.clientdb.controllers;
 
+import dhurd.c195.clientdb.Main;
 import dhurd.c195.clientdb.helper.CountryQuery;
+import dhurd.c195.clientdb.helper.CustomerQuery;
 import dhurd.c195.clientdb.helper.DivisionQuery;
 import dhurd.c195.clientdb.helper.JDBC;
 import dhurd.c195.clientdb.models.Country;
@@ -8,12 +10,13 @@ import dhurd.c195.clientdb.models.Division;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,10 +46,73 @@ public class AddCustomerController implements Initializable {
 
 
 
-    public void addCustSave(ActionEvent actionEvent) {
+    public void addCustSave(ActionEvent actionEvent) throws IOException {
+
+        try {
+        /**    String name = addCustNameTxt.getText();
+            String phone = addCustPhoneTxt.getText();
+            String address = addCustAddressTxt.getText();
+            String state = addCustStateBox.getSelectionModel().getSelectedItem().toString();
+            String postal = addCustPostalTxt.getText();
+            CustomerQuery.newCustomer(name, address, postal, phone, state);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }*/
+        if (addCustNameTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Please enter a name");
+            alert.showAndWait();
+        }
+        else if (addCustPhoneTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Please enter a phone number");
+            alert.showAndWait();
+        }
+        else if (addCustAddressTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Please enter an address");
+            alert.showAndWait();
+        }
+        else if (addCustStateBox.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Please select a State or Division");
+            alert.showAndWait();
+        }
+        else if (addCustPostalTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Please enter a postal code");
+            alert.showAndWait();
+        }
+        else {
+        CustomerQuery.newCustomer(addCustNameTxt.getText(), addCustAddressTxt.getText(),addCustPostalTxt.getText(),
+                addCustPhoneTxt.getText(), String.valueOf(addCustStateBox.getValue()));
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Customer Added");
+            alert.setContentText("New Customer Added");
+            alert.showAndWait();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+            Stage stage = (Stage) addCustPostalTxt.getScene().getWindow();
+            stage.setTitle("Appointments");
+            stage.setScene(scene);
+            stage.show();
+    }
+        }
+
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-    public void addCustCancel(ActionEvent actionEvent) {
+        public void addCustCancel(ActionEvent actionEvent) {
     }
 
     public void selectCountry(ActionEvent actionEvent) throws SQLException {

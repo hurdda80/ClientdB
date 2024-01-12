@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Finished weekly, monthly, all Appointment views">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Populated combo boxes in new customer view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CountryQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CountryQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CustomerQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/CustomerQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/DivisionQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/DivisionQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Division.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Division.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704911121773</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Populated combo boxes in new customer view">
+      <option name="closed" value="true" />
+      <created>1705005265697</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705005265697</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -189,6 +191,7 @@
     <MESSAGE value="Populated Customer table with allCustomers List" />
     <MESSAGE value="Populated Appointments Table, with AllAppointments list" />
     <MESSAGE value="Finished weekly, monthly, all Appointment views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished weekly, monthly, all Appointment views" />
+    <MESSAGE value="Populated combo boxes in new customer view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Populated combo boxes in new customer view" />
   </component>
 </project>

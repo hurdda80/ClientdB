@@ -2,8 +2,8 @@ package dhurd.c195.clientdb.helper;
 import dhurd.c195.clientdb.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import dhurd.c195.clientdb.helper.*;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +31,20 @@ public class CustomerQuery {
             allCustomers.add(customer);
         }
         return allCustomers;
+    }
+
+    public static void newCustomer(String name, String address, String postal, String phone, String division) throws SQLException {
+        Division division1 = DivisionQuery.getDivbyName(division);
+        String sql = "INSERT INTO customers(Customer_Name, Address, Postal_Code, Phone, Division_ID) VALUES (?,?,?,?,?)";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+        preparedStatement.setString(1, name);
+        preparedStatement.setString(2, address);
+        preparedStatement.setString(3, postal);
+        preparedStatement.setString(4, phone);
+        preparedStatement.setInt(5, division1.getDivisionID());
+
+        preparedStatement.execute();
+
     }
 
 }
