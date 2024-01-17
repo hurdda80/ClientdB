@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -134,15 +135,52 @@ public class MainController implements Initializable {
     }
 
     public void updateCustomer(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UpdateCustomer.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
-        Stage stage = (Stage) apptTable.getScene().getWindow();
-        stage.setTitle("Edit Customer");
-        stage.setScene(scene);
-        stage.show();
+        if (custTable.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Select a customer to edit");
+            alert.showAndWait();
+        } else {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UpdateCustomer.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+            UpdateCustomerController UC = fxmlLoader.getController();
+            UC.passCust((Customer) custTable.getSelectionModel().getSelectedItem());
+            Stage stage = (Stage) apptTable.getScene().getWindow();
+            stage.setTitle("Edit Customer");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
-    public void deleteCustomer(ActionEvent actionEvent) {
+    public void deleteCustomer(ActionEvent actionEvent) throws SQLException, IOException {
+        Customer customer = (Customer) custTable.getSelectionModel().getSelectedItem();
+        if (custTable.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Select a customer to delete");
+            alert.showAndWait();
+        }
+        else {
+            int id = customer.getCustomerID();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete Customer?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                CustomerQuery.deleteCustomer(id);
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) custTable.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) custTable.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
     }
 
     public void reportsView(ActionEvent actionEvent) {

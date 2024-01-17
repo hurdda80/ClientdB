@@ -47,5 +47,27 @@ public class CustomerQuery {
 
     }
 
+    public static void updateCustomer(int customerID, String name, String address, String postal, String phone, String division) throws SQLException{
+        Division division1 = DivisionQuery.getDivbyName(division);
+        String sql = "UPDATE customers SET Customer_Name=?, Address=?, Postal_Code=?, Phone=?, Division_ID=? WHERE Customer_ID=?";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+        preparedStatement.setString(1, name);
+        preparedStatement.setString(2, address);
+        preparedStatement.setString(3, postal);
+        preparedStatement.setString(4, phone);
+        preparedStatement.setInt(5, division1.getDivisionID());
+        preparedStatement.setInt(6, customerID);
+
+        preparedStatement.execute();
+    }
+
+    public static void deleteCustomer(int customerID) throws SQLException {
+        String sql = "DELETE from customers WHERE Customer_Id=?";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+        preparedStatement.setInt(1, customerID);
+
+        preparedStatement.execute();
+    }
+
 }
 

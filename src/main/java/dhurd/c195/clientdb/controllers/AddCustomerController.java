@@ -21,6 +21,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddCustomerController implements Initializable {
@@ -49,16 +50,7 @@ public class AddCustomerController implements Initializable {
     public void addCustSave(ActionEvent actionEvent) throws IOException {
 
         try {
-        /**    String name = addCustNameTxt.getText();
-            String phone = addCustPhoneTxt.getText();
-            String address = addCustAddressTxt.getText();
-            String state = addCustStateBox.getSelectionModel().getSelectedItem().toString();
-            String postal = addCustPostalTxt.getText();
-            CustomerQuery.newCustomer(name, address, postal, phone, state);
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }*/
         if (addCustNameTxt.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -112,7 +104,20 @@ public class AddCustomerController implements Initializable {
 
     }
 
-        public void addCustCancel(ActionEvent actionEvent) {
+        public void addCustCancel(ActionEvent actionEvent) throws IOException {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Cancel");
+            alert.setContentText("Cancel New Customer?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && (result.get() == ButtonType.OK)) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) addCustPostalTxt.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            }
     }
 
     public void selectCountry(ActionEvent actionEvent) throws SQLException {
