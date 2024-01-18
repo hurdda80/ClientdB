@@ -105,4 +105,8 @@ public class AppointmentQuery {
 
         return monthAppointments;
     }
+
+    public static void newAppointment(){
+
+    }
 }

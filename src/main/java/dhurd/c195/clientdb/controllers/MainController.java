@@ -114,7 +114,13 @@ public class MainController implements Initializable {
         apptTable.refresh();
     }
 
-    public void newAppt(ActionEvent actionEvent) {
+    public void newAppt(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddAppointment.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 700);
+        Stage stage = (Stage) apptTable.getScene().getWindow();
+        stage.setTitle("Add Appointment");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void updateAppt(ActionEvent actionEvent) {

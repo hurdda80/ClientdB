@@ -91,4 +91,6 @@ public class Customer {
     public void setDivisionID(int divisionID) {
         this.divisionID = divisionID;
     }
+
+
 }
