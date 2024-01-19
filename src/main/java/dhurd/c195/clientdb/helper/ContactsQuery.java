@@ -28,4 +28,20 @@ public class ContactsQuery {
         }
         return allContacts;
     }
+
+    public static Contact getContactID(String contactName) throws SQLException {
+        String sql = "SELECT * FROM contacts WHERE Contact_Name=?";
+
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+        preparedStatement.setString(1, contactName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            Contact contact1 = new Contact(resultSet.getInt("Contact_ID"), resultSet.getString("Contact_Name"),
+                    resultSet.getString("Email"));
+
+            return contact1;
+        }
+        return null;
+    }
 }

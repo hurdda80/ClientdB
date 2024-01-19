@@ -1,5 +1,7 @@
 package dhurd.c195.clientdb.controllers;
 
+import dhurd.c195.clientdb.Main;
+import dhurd.c195.clientdb.helper.AppointmentQuery;
 import dhurd.c195.clientdb.helper.UserQuery;
 import dhurd.c195.clientdb.models.*;
 import dhurd.c195.clientdb.helper.ContactsQuery;
@@ -9,15 +11,16 @@ import dhurd.c195.clientdb.models.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
@@ -48,6 +51,9 @@ public class AddAppointmentController implements Initializable {
     public Button addApptCancelBtn;
     public ComboBox<String> addApptEndTimeBox;
     public Label addApptEndTimeLbl;
+
+    private ZonedDateTime startTimeConverted;
+    private ZonedDateTime endTimeConverted;
 
     private ZonedDateTime toEST(LocalDateTime time) {
         return ZonedDateTime.of(time, ZoneId.of("America/New_York"));
@@ -105,7 +111,134 @@ public class AddAppointmentController implements Initializable {
         addApptUserIDBox.setItems(usersIDList);
     }
 
-    public void addApptSave(ActionEvent actionEvent) {
+    public void addApptSave(ActionEvent actionEvent) throws IOException, SQLException {
+
+        LocalTime startTime = LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem());
+        LocalTime endTime = LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem());
+
+        LocalDate startDate = addApptStartDatePicker.getValue();
+        LocalDate endDate = addApptEndDatePicker.getValue();
+
+        try {
+            if (addApptTitleTxt.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a title");
+                alert.showAndWait();
+            }
+            else if (addApptDescTxt.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a description");
+                alert.showAndWait();
+            }
+            else if (addApptLocTxt.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a location");
+                alert.showAndWait();
+            }
+            else if (addApptContactBox.getSelectionModel().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a contact");
+                alert.showAndWait();
+            }
+            else if (addApptTypeTxt.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a type");
+                alert.showAndWait();
+            }
+            else if (addApptStartDatePicker.getValue() == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start date");
+                alert.showAndWait();
+            }
+            else if (addApptStartTimeBox.getSelectionModel().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start time");
+                alert.showAndWait();
+            }
+            else if (addApptEndDatePicker.getValue()== null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select an end date");
+                alert.showAndWait();
+            }
+            else if (addApptEndTimeBox.getSelectionModel().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select an end time");
+                alert.showAndWait();
+            }
+            else if (addApptCustIDBox.getSelectionModel().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a customer ID");
+                alert.showAndWait();
+            }
+            else if (addApptUserIDBox.getSelectionModel().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a user ID");
+                alert.showAndWait();
+            }
+            else if (addApptEndDatePicker.getValue().isBefore(addApptStartDatePicker.getValue())) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start date that is before the end date");
+                alert.showAndWait();
+            }
+      /**      else if (startTime.isAfter(endTime)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is before the end time");
+                alert.showAndWait();
+            }
+
+           /** else if (!startDate.equals(endDate)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the appointment has the same start and end date");
+                alert.showAndWait();
+            }
+            else if (!overlapAppt()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure these appointment times do not overlap existing appointment times with customer");
+                alert.showAndWait();
+            }
+            else if (!businessHours()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure appointment times are within 8AM - 10PM EST");
+            }
+            */
+            else {
+                AppointmentQuery.newAppointment(addApptContactBox.getSelectionModel().getSelectedItem().toString(), addApptTitleTxt.getText(), addApptDescTxt.getText(),
+                       addApptLocTxt.getText(), addApptTypeTxt.getText(), LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())),
+                        LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())),
+                        addApptCustIDBox.getSelectionModel().getSelectedItem(), addApptUserIDBox.getSelectionModel().getSelectedItem());
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) addApptTitleTxt.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private boolean overlapAppt() throws SQLException {
+        LocalTime startTime = LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem());
+        LocalTime endTime = LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem());
+        LocalDate startDate = addApptStartDatePicker.getValue();
+        LocalDate endDate = addApptEndDatePicker.getValue();
+        LocalDateTime start = startDate.atTime(startTime);
+        LocalDateTime end = endDate.atTime(endTime);
+        LocalDateTime convStart;
+        LocalDateTime convEnd;
+        ObservableList<Appointment> appointments = AppointmentQuery.getAppointmentsByCustomerID(addApptCustIDBox.getSelectionModel().getSelectedItem());
+        for (Appointment appointment: appointments) {
+            convStart = appointment.getStartDate().atTime(appointment.getStartTime().toLocalTime());
+            convEnd = appointment.getEndDate().atTime(appointment.getEndTime().toLocalTime());
+
+            if (convStart.isAfter(start) && convStart.isBefore(end)) {
+                return false;
+            }
+            else if (convEnd.isAfter(start) && convEnd.isBefore(end)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean businessHours() {
+        startTimeConverted = toEST(LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())));
+        endTimeConverted = toEST(LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())));
+        if (startTimeConverted.toLocalTime().isAfter(LocalTime.of(22, 0)) || startTimeConverted.toLocalTime().isBefore(LocalTime.of(8, 0))) {
+            return false;
+        }
+        if (endTimeConverted.toLocalTime().isAfter(LocalTime.of(22, 0))) {
+            return false;
+        }
+        return true;
     }
 
     public void addApptCancel(ActionEvent actionEvent) {
