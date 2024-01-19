@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
@@ -113,12 +114,6 @@ public class AddAppointmentController implements Initializable {
 
     public void addApptSave(ActionEvent actionEvent) throws IOException, SQLException {
 
-        LocalTime startTime = LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem());
-        LocalTime endTime = LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem());
-
-        LocalDate startDate = addApptStartDatePicker.getValue();
-        LocalDate endDate = addApptEndDatePicker.getValue();
-
         try {
             if (addApptTitleTxt.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a title");
@@ -168,13 +163,19 @@ public class AddAppointmentController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start date that is before the end date");
                 alert.showAndWait();
             }
-      /**      else if (startTime.isAfter(endTime)) {
+          /** else if (startTime.isAfter(endTime)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is before the end time");
                 alert.showAndWait();
             }
 
-           /** else if (!startDate.equals(endDate)) {
+           else if (!startDate.equals(endDate)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the appointment has the same start and end date");
+                alert.showAndWait();
+            }
+           */
+
+            else if (!timeDateCheck()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is after the end time, and the start date is the same as the end date");
                 alert.showAndWait();
             }
             else if (!overlapAppt()) {
@@ -183,20 +184,26 @@ public class AddAppointmentController implements Initializable {
             }
             else if (!businessHours()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure appointment times are within 8AM - 10PM EST");
+                alert.showAndWait();
             }
-            */
-            else {
-                AppointmentQuery.newAppointment(addApptContactBox.getSelectionModel().getSelectedItem().toString(), addApptTitleTxt.getText(), addApptDescTxt.getText(),
-                       addApptLocTxt.getText(), addApptTypeTxt.getText(), LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())),
-                        LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())),
-                        addApptCustIDBox.getSelectionModel().getSelectedItem(), addApptUserIDBox.getSelectionModel().getSelectedItem());
 
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-                Stage stage = (Stage) addApptTitleTxt.getScene().getWindow();
-                stage.setTitle("Appointments");
-                stage.setScene(scene);
-                stage.show();
+            else {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Create new appointment?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && (result.get() == ButtonType.OK)) {
+
+                    AppointmentQuery.newAppointment(addApptContactBox.getSelectionModel().getSelectedItem().toString(), addApptTitleTxt.getText(), addApptDescTxt.getText(),
+                            addApptLocTxt.getText(), addApptTypeTxt.getText(), LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())),
+                            LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())),
+                            addApptCustIDBox.getSelectionModel().getSelectedItem(), addApptUserIDBox.getSelectionModel().getSelectedItem());
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                    Stage stage = (Stage) addApptTitleTxt.getScene().getWindow();
+                    stage.setTitle("Appointments");
+                    stage.setScene(scene);
+                    stage.show();
+                }
             }
 
 
@@ -225,6 +232,20 @@ public class AddAppointmentController implements Initializable {
             else if (convEnd.isAfter(start) && convEnd.isBefore(end)) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean timeDateCheck() {
+        LocalTime startTime = LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem());
+        LocalTime endTime = LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem());
+        LocalDate startDate = addApptStartDatePicker.getValue();
+        LocalDate endDate = addApptEndDatePicker.getValue();
+        if (startTime.isAfter(endTime)) {
+            return false;
+        }
+        if (!startDate.isEqual(endDate)) {
+            return false;
         }
         return true;
     }

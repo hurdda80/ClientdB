@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Created &quot;Update Appointment&quot; view and controller shell">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Able to add appointments, need to troubleshoot validation checks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/ContactsQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/ContactsQuery.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705613422670</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Able to add appointments, need to troubleshoot validation checks">
+      <option name="closed" value="true" />
+      <created>1705692974797</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705692974797</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -228,6 +234,7 @@
     <MESSAGE value="Update and delete customers functional" />
     <MESSAGE value="Created &quot;Add Appointment&quot; view and controller.. populated combo boxes" />
     <MESSAGE value="Created &quot;Update Appointment&quot; view and controller shell" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created &quot;Update Appointment&quot; view and controller shell" />
+    <MESSAGE value="Able to add appointments, need to troubleshoot validation checks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Able to add appointments, need to troubleshoot validation checks" />
   </component>
 </project>
