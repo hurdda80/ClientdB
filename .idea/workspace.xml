@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Able to add appointments, need to troubleshoot validation checks">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Fixed most of appointment creation validation checks.. still need to fix time conversion for business hours">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
     </list>
@@ -214,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705692974797</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed most of appointment creation validation checks.. still need to fix time conversion for business hours">
+      <option name="closed" value="true" />
+      <created>1705694282847</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705694282847</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -235,6 +243,7 @@
     <MESSAGE value="Created &quot;Add Appointment&quot; view and controller.. populated combo boxes" />
     <MESSAGE value="Created &quot;Update Appointment&quot; view and controller shell" />
     <MESSAGE value="Able to add appointments, need to troubleshoot validation checks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Able to add appointments, need to troubleshoot validation checks" />
+    <MESSAGE value="Fixed most of appointment creation validation checks.. still need to fix time conversion for business hours" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed most of appointment creation validation checks.. still need to fix time conversion for business hours" />
   </component>
 </project>

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
+import java.time.chrono.ChronoZonedDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
@@ -55,8 +56,9 @@ public class AddAppointmentController implements Initializable {
 
     private ZonedDateTime startTimeConverted;
     private ZonedDateTime endTimeConverted;
+    private LocalDateTime startTimeparse;
 
-    private ZonedDateTime toEST(LocalDateTime time) {
+    private ZonedDateTime toEST (LocalDateTime time) {
         return ZonedDateTime.of(time, ZoneId.of("America/New_York"));
     }
 
@@ -190,6 +192,7 @@ public class AddAppointmentController implements Initializable {
             else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Create new appointment?");
                 Optional<ButtonType> result = alert.showAndWait();
+
                 if (result.isPresent() && (result.get() == ButtonType.OK)) {
 
                     AppointmentQuery.newAppointment(addApptContactBox.getSelectionModel().getSelectedItem().toString(), addApptTitleTxt.getText(), addApptDescTxt.getText(),
@@ -204,6 +207,7 @@ public class AddAppointmentController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 }
+
             }
 
 
@@ -251,12 +255,15 @@ public class AddAppointmentController implements Initializable {
     }
 
     private boolean businessHours() {
-        startTimeConverted = toEST(LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())));
-        endTimeConverted = toEST(LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())));
-        if (startTimeConverted.toLocalTime().isAfter(LocalTime.of(22, 0)) || startTimeConverted.toLocalTime().isBefore(LocalTime.of(8, 0))) {
-            return false;
-        }
-        if (endTimeConverted.toLocalTime().isAfter(LocalTime.of(22, 0))) {
+        LocalDateTime startDateTime = LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem()));
+        ZonedDateTime estStartDateTime = ZonedDateTime.of(startDateTime, ZoneId.systemDefault());
+        LocalDateTime endDateTime = LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem()));
+        ZonedDateTime estEndDateTime = ZonedDateTime.of(endDateTime, ZoneId.systemDefault());
+        ZonedDateTime businessOpen = ZonedDateTime.of(addApptStartDatePicker.getValue(), LocalTime.of(8,0), ZoneId.of("America/New_York"));
+        ZonedDateTime businessClose = ZonedDateTime.of(addApptEndDatePicker.getValue(), LocalTime.of(22,0), ZoneId.of("America/New_York"));
+
+        if (estStartDateTime.isBefore(businessOpen) || estStartDateTime.isAfter(businessClose) ||
+            estEndDateTime.isAfter(businessClose) || estEndDateTime.isBefore(businessOpen)) {
             return false;
         }
         return true;
