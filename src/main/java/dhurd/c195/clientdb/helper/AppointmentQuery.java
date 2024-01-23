@@ -31,7 +31,7 @@ public class AppointmentQuery {
             LocalDateTime startTime = resultSet.getTimestamp("Start").toLocalDateTime();
             LocalDate endDate = resultSet.getDate("End").toLocalDate();
             LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
-            int custID = resultSet.getInt("Customer_ID");
+            Integer custID = resultSet.getInt("Customer_ID");
             int userID = resultSet.getInt("User_ID");
             int contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");

@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
-import java.time.chrono.ChronoZonedDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
@@ -54,13 +53,7 @@ public class AddAppointmentController implements Initializable {
     public ComboBox<String> addApptEndTimeBox;
     public Label addApptEndTimeLbl;
 
-    private ZonedDateTime startTimeConverted;
-    private ZonedDateTime endTimeConverted;
-    private LocalDateTime startTimeparse;
 
-    private ZonedDateTime toEST (LocalDateTime time) {
-        return ZonedDateTime.of(time, ZoneId.of("America/New_York"));
-    }
 
     private void timeBoxes() {
         ObservableList<String> times = FXCollections.observableArrayList();

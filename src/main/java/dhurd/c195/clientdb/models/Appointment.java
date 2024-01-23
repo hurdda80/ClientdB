@@ -13,7 +13,7 @@ public class Appointment {
     private LocalDateTime startTime;
     private LocalDate endDate;
     private LocalDateTime endTime;
-    private int customerID;
+    private Integer customerID;
     private int userID;
     private int contactID;
     private String contactName;
@@ -27,7 +27,7 @@ public class Appointment {
      LocalDateTime startTime,
      LocalDate endDate,
      LocalDateTime endTime,
-     int customerID,
+     Integer customerID,
      int userID,
      int contactID,
      String contactName ) {

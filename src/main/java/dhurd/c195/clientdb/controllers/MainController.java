@@ -92,6 +92,8 @@ public class MainController implements Initializable {
 
 
 
+
+
     } catch (SQLException e) {
         throw new RuntimeException(e);
         }
@@ -123,7 +125,22 @@ public class MainController implements Initializable {
         stage.show();
     }
 
-    public void updateAppt(ActionEvent actionEvent) {
+    public void updateAppt(ActionEvent actionEvent) throws IOException {
+        if (apptTable.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Select an appointment to edit");
+            alert.showAndWait();
+        } else {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UpdateAppointment.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 700);
+            UpdateAppointmentController UA = fxmlLoader.getController();
+            UA.passAppt((Appointment) apptTable.getSelectionModel().getSelectedItem());
+            Stage stage = (Stage) apptTable.getScene().getWindow();
+            stage.setTitle("Edit Appointment");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void deleteAppt(ActionEvent actionEvent) {

@@ -148,6 +148,7 @@ public class UpdateCustomerController implements Initializable {
         }
         upCustStateBox.setItems(allDivisions);
 
+
     }
 
 }
