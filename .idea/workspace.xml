@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Fixed business hours validation check">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Started on update Appointment.. stuck on passing user and customer ID">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Appointment.java" afterDir="false" />
     </list>
@@ -235,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706041860370</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Started on update Appointment.. stuck on passing user and customer ID">
+      <option name="closed" value="true" />
+      <created>1706046857193</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706046857193</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -258,6 +263,7 @@
     <MESSAGE value="Able to add appointments, need to troubleshoot validation checks" />
     <MESSAGE value="Fixed most of appointment creation validation checks.. still need to fix time conversion for business hours" />
     <MESSAGE value="Fixed business hours validation check" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed business hours validation check" />
+    <MESSAGE value="Started on update Appointment.. stuck on passing user and customer ID" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started on update Appointment.. stuck on passing user and customer ID" />
   </component>
 </project>

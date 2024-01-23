@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Appointment {
-    private int apptID;
+    private Integer apptID;
     private String title;
     private String description;
     private String location;
@@ -14,11 +14,11 @@ public class Appointment {
     private LocalDate endDate;
     private LocalDateTime endTime;
     private Integer customerID;
-    private int userID;
-    private int contactID;
+    private Integer userID;
+    private Integer contactID;
     private String contactName;
 
-    public Appointment (int apptID,
+    public Appointment (Integer apptID,
      String title,
      String description,
      String location,
@@ -28,8 +28,8 @@ public class Appointment {
      LocalDate endDate,
      LocalDateTime endTime,
      Integer customerID,
-     int userID,
-     int contactID,
+     Integer userID,
+     Integer contactID,
      String contactName ) {
         this.apptID = apptID;
         this.title = title;
@@ -46,7 +46,7 @@ public class Appointment {
         this.contactName = contactName;
     }
 
-    public int getApptID() {
+    public Integer getApptID() {
         return apptID;
     }
 
@@ -118,27 +118,27 @@ public class Appointment {
         this.endTime = endTime;
     }
 
-    public int getCustomerID() {
+    public Integer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
     }
 
-    public int getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
-    public int getContactID() {
+    public Integer getContactID() {
         return contactID;
     }
 
-    public void setContactID(int contactID) {
+    public void setContactID(Integer contactID) {
         this.contactID = contactID;
     }
 

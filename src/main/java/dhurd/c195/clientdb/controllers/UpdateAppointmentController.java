@@ -41,7 +41,7 @@ public class UpdateAppointmentController implements Initializable {
     public DatePicker upApptEndDatePicker;
     public ComboBox upApptEndTimeBox;
     public ComboBox<Integer> upApptCustIDBox;
-    public ComboBox upApptUserIDBox;
+    public ComboBox<Integer> upApptUserIDBox;
     public ComboBox upApptContactBox;
     public Label upApptTypeLbl;
     public TextField upApptTypeTxt;

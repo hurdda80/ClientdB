@@ -22,7 +22,7 @@ public class AppointmentQuery {
         PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            int apptID = resultSet.getInt("Appointment_ID");
+            Integer apptID = resultSet.getInt("Appointment_ID");
             String title = resultSet.getString("Title");
             String description = resultSet.getString("Description");
             String loc = resultSet.getString("Location");
@@ -32,8 +32,8 @@ public class AppointmentQuery {
             LocalDate endDate = resultSet.getDate("End").toLocalDate();
             LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
             Integer custID = resultSet.getInt("Customer_ID");
-            int userID = resultSet.getInt("User_ID");
-            int contactID = resultSet.getInt("Contact_ID");
+            Integer userID = resultSet.getInt("User_ID");
+            Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, startTime, endDate, endTime, custID, userID, contactID, contact);
@@ -54,7 +54,7 @@ public class AppointmentQuery {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
-            int apptID = resultSet.getInt("Appointment_ID");
+            Integer apptID = resultSet.getInt("Appointment_ID");
             String title = resultSet.getString("Title");
             String description = resultSet.getString("Description");
             String loc = resultSet.getString("Location");
@@ -63,9 +63,9 @@ public class AppointmentQuery {
             LocalDateTime startTime = resultSet.getTimestamp("Start").toLocalDateTime();
             LocalDate endDate = resultSet.getDate("End").toLocalDate();
             LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
-            int custID = resultSet.getInt("Customer_ID");
-            int userID = resultSet.getInt("User_ID");
-            int contactID = resultSet.getInt("Contact_ID");
+            Integer custID = resultSet.getInt("Customer_ID");
+            Integer userID = resultSet.getInt("User_ID");
+            Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, startTime, endDate, endTime, custID, userID, contactID, contact);
@@ -87,7 +87,7 @@ public class AppointmentQuery {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
-            int apptID = resultSet.getInt("Appointment_ID");
+            Integer apptID = resultSet.getInt("Appointment_ID");
             String title = resultSet.getString("Title");
             String description = resultSet.getString("Description");
             String loc = resultSet.getString("Location");
@@ -96,9 +96,9 @@ public class AppointmentQuery {
             LocalDateTime startTime = resultSet.getTimestamp("Start").toLocalDateTime();
             LocalDate endDate = resultSet.getDate("End").toLocalDate();
             LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
-            int custID = resultSet.getInt("Customer_ID");
-            int userID = resultSet.getInt("User_ID");
-            int contactID = resultSet.getInt("Contact_ID");
+            Integer custID = resultSet.getInt("Customer_ID");
+            Integer userID = resultSet.getInt("User_ID");
+            Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, startTime, endDate, endTime, custID, userID, contactID, contact);
@@ -119,7 +119,7 @@ public class AppointmentQuery {
         preparedStatement.execute();
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            int apptID = resultSet.getInt("Appointment_ID");
+            Integer apptID = resultSet.getInt("Appointment_ID");
             String title = resultSet.getString("Title");
             String description = resultSet.getString("Description");
             String loc = resultSet.getString("Location");
@@ -128,9 +128,9 @@ public class AppointmentQuery {
             LocalDateTime startTime = resultSet.getTimestamp("Start").toLocalDateTime();
             LocalDate endDate = resultSet.getDate("End").toLocalDate();
             LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
-            int custID = resultSet.getInt("Customer_ID");
-            int userID = resultSet.getInt("User_ID");
-            int contactID = resultSet.getInt("Contact_ID");
+            Integer custID = resultSet.getInt("Customer_ID");
+            Integer userID = resultSet.getInt("User_ID");
+            Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, startTime, endDate, endTime, custID, userID, contactID, contact);
@@ -140,7 +140,7 @@ public class AppointmentQuery {
 
     }
 
-    public static void newAppointment(String contactName, String title, String description, String loc, String type, LocalDateTime start, LocalDateTime end, int customerID, int userID ) throws SQLException {
+    public static void newAppointment(String contactName, String title, String description, String loc, String type, LocalDateTime start, LocalDateTime end, Integer customerID, int userID ) throws SQLException {
 
         Contact contact = ContactsQuery.getContactID(contactName);
         String sql = "INSERT INTO appointments(Title, Description, Location, Type, Start, End, Customer_ID, User_ID, Contact_ID) VALUES (?,?,?,?,?,?,?,?,?)";
