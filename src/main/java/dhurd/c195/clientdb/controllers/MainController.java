@@ -126,6 +126,7 @@ public class MainController implements Initializable {
     }
 
     public void updateAppt(ActionEvent actionEvent) throws IOException {
+
         if (apptTable.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");

@@ -158,16 +158,6 @@ public class AddAppointmentController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start date that is before the end date");
                 alert.showAndWait();
             }
-          /** else if (startTime.isAfter(endTime)) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is before the end time");
-                alert.showAndWait();
-            }
-
-           else if (!startDate.equals(endDate)) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the appointment has the same start and end date");
-                alert.showAndWait();
-            }
-           */
 
             else if (!timeDateCheck()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is after the end time, and the start date is the same as the end date");
@@ -262,7 +252,17 @@ public class AddAppointmentController implements Initializable {
         return true;
     }
 
-    public void addApptCancel(ActionEvent actionEvent) {
+    public void addApptCancel(ActionEvent actionEvent) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Cancel making appointment?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && (result.get() == ButtonType.OK)) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+            Stage stage = (Stage) addApptTitleTxt.getScene().getWindow();
+            stage.setTitle("Appointments");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @Override

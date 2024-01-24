@@ -108,7 +108,7 @@ public class AppointmentQuery {
         return monthAppointments;
     }
 
-    public static ObservableList<Appointment> getAppointmentsByCustomerID (int customerID) throws SQLException {
+    public static ObservableList<Appointment> getAppointmentsByCustomerID (Integer customerID) throws SQLException {
         ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 
         String sql = "SELECT * FROM appointments AS a INNER JOIN contacts AS b ON a.Contact_ID=b.Contact_ID WHERE Customer_ID=?";
@@ -140,7 +140,7 @@ public class AppointmentQuery {
 
     }
 
-    public static void newAppointment(String contactName, String title, String description, String loc, String type, LocalDateTime start, LocalDateTime end, Integer customerID, int userID ) throws SQLException {
+    public static void newAppointment(String contactName, String title, String description, String loc, String type, LocalDateTime start, LocalDateTime end, Integer customerID, Integer userID ) throws SQLException {
 
         Contact contact = ContactsQuery.getContactID(contactName);
         String sql = "INSERT INTO appointments(Title, Description, Location, Type, Start, End, Customer_ID, User_ID, Contact_ID) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -159,7 +159,25 @@ public class AppointmentQuery {
         preparedStatement.execute();
     }
 
+    public static void updateAppointment(Integer appointmentID,String contactName, String title, String description, String loc, String type, LocalDateTime start, LocalDateTime end, Integer customerID, Integer userID  ) throws SQLException {
 
+        Contact contact = ContactsQuery.getContactID(contactName);
+        String sql = "UPDATE appointments SET Title=?, Description=?, Location=?, Type=?, Start=?, End=?, Customer_ID=?, User_ID=?, Contact_ID=? WHERE Appointment_ID=?";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, title);
+        preparedStatement.setString(2, description);
+        preparedStatement.setString(3, loc);
+        preparedStatement.setString(4, type);
+        preparedStatement.setTimestamp(5, Timestamp.valueOf(start));
+        preparedStatement.setTimestamp(6, Timestamp.valueOf(end));
+        preparedStatement.setInt(7, customerID);
+        preparedStatement.setInt(8, userID);
+        preparedStatement.setInt(9, contact.getContactID());
+        preparedStatement.setInt(10, appointmentID);
+
+        preparedStatement.execute();
+    }
 
 
 }
