@@ -18,8 +18,6 @@ public class AppointmentQuery {
 
 
     public static ObservableList<Appointment> getAllAppointments() throws SQLException {
-        ZoneId z = systemDefault();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
         String sql = "SELECT * FROM appointments AS a INNER JOIN contacts AS b ON a.Contact_ID = b.Contact_ID";
         PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
@@ -38,51 +36,58 @@ public class AppointmentQuery {
             Integer userID = resultSet.getInt("User_ID");
             Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
-
-           ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
-           ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
-          // LocalTime time1 = resultSet.getTime("Start").toLocalTime().truncatedTo(ChronoUnit.MINUTES);
-          // LocalTime time2 = resultSet.getTime("End").toLocalTime().truncatedTo(ChronoUnit.MINUTES);
+            ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
+            ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
 
 
 
             int zhours = time1.getHour();
             int zminutes = time1.getMinute();
-            String ztime = String.valueOf(zhours);
+            String ztime;
             String ztime2;
+            if (zhours < 10) {
+                ztime = "0" + String.valueOf(zhours);
+            }
+            else {
+                ztime = String.valueOf(zhours); }
 
             if (zminutes == 0) {
                 ztime2 = "00";
+            } else {
+                ztime2 = String.valueOf(zminutes);
             }
-            else {ztime2 = String.valueOf(zminutes);}
 
+                String zzz = ztime + ":" + ztime2;
 
-            String zzz = ztime + ":" + ztime2;
-            int qhours = time2.getHour();
-            int qminutes = time2.getMinute();
-            String qtime = String.valueOf(qhours);
-            String qtime2 = String.valueOf(qminutes);
-            String qqq = qtime + ":" + qtime2;
-            String stringStart = zzz;
-            String stringEnd = qqq;
+                int qhours = time2.getHour();
+                int qminutes = time2.getMinute();
+                String qtime;
+                String qtime2;
 
+                if (qhours < 10) {
+                    qtime = "0" + (zhours);
+                }
+                else {
+                    qtime = String.valueOf(qhours);
+                }
 
-           // String stringStart = time1.toString().formatted(formatter);
-          //  String stringEnd = time2.toString().formatted(formatter);
+                if (qminutes == 0) {
+                    qtime2 = "00";
+                } else {
+                    qtime2 = String.valueOf(qminutes);
+                }
+                String qqq = qtime + ":" + qtime2;
+                String stringStart = zzz;
+                String stringEnd = qqq;
 
-
-           // LocalTime time10 = hello.toLocalTime();
-          //  LocalTime time20 = hello2.toLocalTime();
-
-
-            Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
-            allAppointments.add(appointment);
+                Appointment appointment = new Appointment(apptID, title, description, loc, type, startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
+                allAppointments.add(appointment);
+            }
+            return allAppointments;
         }
-        return allAppointments;
-    }
+
 
     public static ObservableList<Appointment> getWeekAppointments() throws SQLException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         ObservableList<Appointment> weekAppointments = FXCollections.observableArrayList();
         LocalDateTime today = LocalDateTime.now();
         LocalDateTime week = today.plusDays(7);
@@ -107,8 +112,47 @@ public class AppointmentQuery {
             Integer userID = resultSet.getInt("User_ID");
             Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
-            String stringStart = resultSet.getTime("Start").toString().formatted(formatter);
-            String stringEnd = resultSet.getTime("End").toString().formatted(formatter);
+            ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
+            ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
+
+            int zhours = time1.getHour();
+            int zminutes = time1.getMinute();
+            String ztime;
+            String ztime2;
+            if (zhours < 10) {
+                ztime = "0" + String.valueOf(zhours);
+            }
+            else {
+                ztime = String.valueOf(zhours); }
+
+            if (zminutes == 0) {
+                ztime2 = "00";
+            } else {
+                ztime2 = String.valueOf(zminutes);
+            }
+
+            String zzz = ztime + ":" + ztime2;
+
+            int qhours = time2.getHour();
+            int qminutes = time2.getMinute();
+            String qtime;
+            String qtime2;
+
+            if (qhours < 10) {
+                qtime = "0" + (zhours);
+            }
+            else {
+                qtime = String.valueOf(qhours);
+            }
+
+            if (qminutes == 0) {
+                qtime2 = "00";
+            } else {
+                qtime2 = String.valueOf(qminutes);
+            }
+            String qqq = qtime + ":" + qtime2;
+            String stringStart = zzz;
+            String stringEnd = qqq;
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
             weekAppointments.add(appointment);
@@ -118,7 +162,6 @@ public class AppointmentQuery {
     }
 
     public static ObservableList<Appointment> getMonthAppointments() throws SQLException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         ObservableList<Appointment> monthAppointments = FXCollections.observableArrayList();
         LocalDateTime today = LocalDateTime.now();
         LocalDateTime month = today.plusDays(31);
@@ -143,9 +186,48 @@ public class AppointmentQuery {
             Integer userID = resultSet.getInt("User_ID");
             Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
-            String stringStart = resultSet.getTime("Start").toString().formatted(formatter);
-            String stringEnd = resultSet.getTime("End").toString().formatted(formatter);
+            ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
+            ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
 
+
+            int zhours = time1.getHour();
+            int zminutes = time1.getMinute();
+            String ztime;
+            String ztime2;
+            if (zhours < 10) {
+                ztime = "0" + String.valueOf(zhours);
+            }
+            else {
+                ztime = String.valueOf(zhours); }
+
+            if (zminutes == 0) {
+                ztime2 = "00";
+            } else {
+                ztime2 = String.valueOf(zminutes);
+            }
+
+            String zzz = ztime + ":" + ztime2;
+
+            int qhours = time2.getHour();
+            int qminutes = time2.getMinute();
+            String qtime;
+            String qtime2;
+
+            if (qhours < 10) {
+                qtime = "0" + (zhours);
+            }
+            else {
+                qtime = String.valueOf(qhours);
+            }
+
+            if (qminutes == 0) {
+                qtime2 = "00";
+            } else {
+                qtime2 = String.valueOf(qminutes);
+            }
+            String qqq = qtime + ":" + qtime2;
+            String stringStart = zzz;
+            String stringEnd = qqq;
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
             monthAppointments.add(appointment);
         }
@@ -154,7 +236,6 @@ public class AppointmentQuery {
     }
 
     public static ObservableList<Appointment> getAppointmentsByCustomerID (Integer customerID) throws SQLException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 
         String sql = "SELECT * FROM appointments AS a INNER JOIN contacts AS b ON a.Contact_ID=b.Contact_ID WHERE Customer_ID=?";
@@ -178,8 +259,47 @@ public class AppointmentQuery {
             Integer userID = resultSet.getInt("User_ID");
             Integer contactID = resultSet.getInt("Contact_ID");
             String contact = resultSet.getString("Contact_Name");
-            String stringStart = resultSet.getTime("Start").toString().formatted(formatter);
-            String stringEnd = resultSet.getTime("End").toString().formatted(formatter);
+            ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
+            ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
+
+            int zhours = time1.getHour();
+            int zminutes = time1.getMinute();
+            String ztime;
+            String ztime2;
+            if (zhours < 10) {
+                ztime = "0" + String.valueOf(zhours);
+            }
+            else {
+                ztime = String.valueOf(zhours); }
+
+            if (zminutes == 0) {
+                ztime2 = "00";
+            } else {
+                ztime2 = String.valueOf(zminutes);
+            }
+
+            String zzz = ztime + ":" + ztime2;
+
+            int qhours = time2.getHour();
+            int qminutes = time2.getMinute();
+            String qtime;
+            String qtime2;
+
+            if (qhours < 10) {
+                qtime = "0" + (zhours);
+            }
+            else {
+                qtime = String.valueOf(qhours);
+            }
+
+            if (qminutes == 0) {
+                qtime2 = "00";
+            } else {
+                qtime2 = String.valueOf(qminutes);
+            }
+            String qqq = qtime + ":" + qtime2;
+            String stringStart = zzz;
+            String stringEnd = qqq;
 
             Appointment appointment = new Appointment(apptID, title, description, loc, type,startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
            appointments.add(appointment);
