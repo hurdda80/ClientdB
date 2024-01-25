@@ -59,8 +59,8 @@ public class UpdateAppointmentController implements Initializable {
 
     private void timeBoxes() {
         ObservableList<String> times = FXCollections.observableArrayList();
-        LocalTime start = LocalTime.of(0, 0);
-        LocalTime end = LocalTime.of(23, 45);
+        LocalTime start = LocalTime.of(0, 0, 00);
+        LocalTime end = LocalTime.of(23, 45, 00);
         times.add(start.toString());
         while (start.isBefore(end)) {
             start = start.plusMinutes(15);
@@ -141,6 +141,7 @@ public class UpdateAppointmentController implements Initializable {
                 alert.showAndWait();
             }
             else if (upApptStartTimeBox.getSelectionModel().isEmpty()) {
+
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a start time");
                 alert.showAndWait();
             }
@@ -282,9 +283,9 @@ public class UpdateAppointmentController implements Initializable {
         upApptContactBox.setValue(appointment.getContactName());
         upApptTypeTxt.setText(appointment.getType());
         upApptStartDatePicker.setValue(appointment.getStartDate());
-        upApptStartTimeBox.setValue(String.valueOf(appointment.getStartTime()));
+        upApptStartTimeBox.getSelectionModel().select(appointment.getStringStart());
         upApptEndDatePicker.setValue(appointment.getEndDate());
-        upApptEndTimeBox.setValue(String.valueOf(appointment.getEndTime()));
+        upApptEndTimeBox.getSelectionModel().select(appointment.getStringEnd());
         upApptCustIDBox.getSelectionModel().select(appointment.getCustomerID());
         upApptUserIDBox.getSelectionModel().select(appointment.getUserID());
 

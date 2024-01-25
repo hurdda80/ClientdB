@@ -57,8 +57,8 @@ public class AddAppointmentController implements Initializable {
 
     private void timeBoxes() {
         ObservableList<String> times = FXCollections.observableArrayList();
-        LocalTime start = LocalTime.of(0, 0);
-        LocalTime end = LocalTime.of(23, 45);
+        LocalTime start = LocalTime.of(0, 0, 00);
+        LocalTime end = LocalTime.of(23, 45, 00);
         times.add(start.toString());
         while (start.isBefore(end)) {
             start = start.plusMinutes(15);
@@ -180,6 +180,7 @@ public class AddAppointmentController implements Initializable {
 
                     AppointmentQuery.newAppointment(addApptContactBox.getSelectionModel().getSelectedItem().toString(), addApptTitleTxt.getText(), addApptDescTxt.getText(),
                             addApptLocTxt.getText(), addApptTypeTxt.getText(), LocalDateTime.of(addApptStartDatePicker.getValue(), LocalTime.parse(addApptStartTimeBox.getSelectionModel().getSelectedItem())),
+                            addApptStartTimeBox.getSelectionModel().getSelectedItem(), addApptEndTimeBox.getSelectionModel().getSelectedItem(),
                             LocalDateTime.of(addApptEndDatePicker.getValue(), LocalTime.parse(addApptEndTimeBox.getSelectionModel().getSelectedItem())),
                             addApptCustIDBox.getSelectionModel().getSelectedItem(), addApptUserIDBox.getSelectionModel().getSelectedItem());
 

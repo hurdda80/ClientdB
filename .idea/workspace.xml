@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Fixed passing Appointment parameters to update Appointment screen">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Finished update Appointment functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/models/Appointment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706047988242</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Finished update Appointment functionality">
+      <option name="closed" value="true" />
+      <created>1706129204678</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1706129204678</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -274,6 +282,7 @@
     <MESSAGE value="Fixed business hours validation check" />
     <MESSAGE value="Started on update Appointment.. stuck on passing user and customer ID" />
     <MESSAGE value="Fixed passing Appointment parameters to update Appointment screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed passing Appointment parameters to update Appointment screen" />
+    <MESSAGE value="Finished update Appointment functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished update Appointment functionality" />
   </component>
 </project>

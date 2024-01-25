@@ -17,6 +17,8 @@ public class Appointment {
     private Integer userID;
     private Integer contactID;
     private String contactName;
+    private String stringStart;
+    private String stringEnd;
 
     public Appointment (Integer apptID,
      String title,
@@ -24,6 +26,8 @@ public class Appointment {
      String location,
      String type,
     LocalDate startDate,
+     String stringStart,
+     String stringEnd,
      LocalDateTime startTime,
      LocalDate endDate,
      LocalDateTime endTime,
@@ -37,6 +41,8 @@ public class Appointment {
         this.location = location;
         this.type = type;
         this.startDate = startDate;
+        this.stringStart = stringStart;
+        this.stringEnd = stringEnd;
         this.startTime = startTime;
         this.endDate = endDate;
         this.endTime = endTime;
@@ -113,6 +119,18 @@ public class Appointment {
     public LocalDateTime getEndTime() {
         return endTime;
     }
+
+    public void setStringStart (String stringStart) {
+        this.stringStart = stringStart;
+    }
+
+    public String getStringStart() {return stringStart;}
+
+    public void setStringEnd (String stringEnd) {
+        this.stringEnd = stringEnd;
+    }
+
+    public String getStringEnd() {return stringEnd;}
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
