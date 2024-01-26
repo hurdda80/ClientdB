@@ -347,6 +347,15 @@ public class AppointmentQuery {
         preparedStatement.execute();
     }
 
+    public static void deleteAppointment(Integer appointmentID) throws SQLException {
+        String sql = "DELETE from appointments WHERE Appointment_ID=?";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1, appointmentID);
+
+        preparedStatement.execute();
+
+    }
 
 }
 

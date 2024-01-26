@@ -144,7 +144,36 @@ public class MainController implements Initializable {
         }
     }
 
-    public void deleteAppt(ActionEvent actionEvent) {
+    public void deleteAppt(ActionEvent actionEvent) throws SQLException, IOException {
+        Appointment appointment = (Appointment) apptTable.getSelectionModel().getSelectedItem();
+        if (apptTable.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Select an appointment to delete");
+            alert.showAndWait();
+        } else {
+            Integer id = appointment.getApptID();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete Appointment?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                AppointmentQuery.deleteAppointment(id);
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "Appointment ID: " +id +" of type: "+ appointment.getType()+" deleted");
+                alert1.showAndWait();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) custTable.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+                Stage stage = (Stage) custTable.getScene().getWindow();
+                stage.setTitle("Appointments");
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
     }
 
     public void newCustomer(ActionEvent actionEvent) throws IOException, SQLException {
