@@ -214,10 +214,10 @@ public class AddAppointmentController implements Initializable {
             convStart = appointment.getStartDate().atTime(appointment.getStartTime().toLocalTime());
             convEnd = appointment.getEndDate().atTime(appointment.getEndTime().toLocalTime());
 
-            if (convStart.isAfter(start) && convStart.isBefore(end)) {
+            if (convStart.isAfter(start) && convStart.isBefore(end) || convStart.isEqual(start) || convStart.isEqual(end)) {
                 return false;
             }
-            else if (convEnd.isAfter(start) && convEnd.isBefore(end)) {
+            else if (convEnd.isAfter(start) && convEnd.isBefore(end) || convEnd.isEqual(end) || convEnd.isEqual(start)) {
                 return false;
             }
         }
