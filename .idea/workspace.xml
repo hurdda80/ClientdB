@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Added appointment deletion functionality">
+    <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Customer deletion now includes all associated appointments being deleted.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706733061369</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Customer deletion now includes all associated appointments being deleted.">
+      <option name="closed" value="true" />
+      <created>1706898748537</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1706898748537</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -315,6 +324,7 @@
     <MESSAGE value="Finished update Appointment functionality" />
     <MESSAGE value="Corrected error in update Appointment, start and end times." />
     <MESSAGE value="Added appointment deletion functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added appointment deletion functionality" />
+    <MESSAGE value="Customer deletion now includes all associated appointments being deleted." />
+    <option name="LAST_COMMIT_MESSAGE" value="Customer deletion now includes all associated appointments being deleted." />
   </component>
 </project>

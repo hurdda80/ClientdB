@@ -160,11 +160,11 @@ public class AddAppointmentController implements Initializable {
             }
 
             else if (!timeDateCheck()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure the start time is after the end time, and the start date is the same as the end date");
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Correct the start/end time; and/or start/end on same day");
                 alert.showAndWait();
             }
             else if (!overlapAppt()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Please ensure these appointment times do not overlap existing appointment times with customer");
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Appointment overlaps with existing appointment");
                 alert.showAndWait();
             }
             else if (!businessHours()) {

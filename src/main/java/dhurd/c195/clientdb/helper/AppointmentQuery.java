@@ -308,6 +308,79 @@ public class AppointmentQuery {
 
     }
 
+    public static Appointment getAppointmentsByAppointmentID (Integer appointmentID) throws SQLException {
+
+
+        String sql = "SELECT * FROM appointments AS a INNER JOIN contacts AS b ON a.Contact_ID=b.Contact_ID WHERE Appointment_ID=?";
+
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+        preparedStatement.setInt(1, appointmentID);
+
+        preparedStatement.execute();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Appointment appointment = null;
+        while (resultSet.next()) {
+            Integer apptID = resultSet.getInt("Appointment_ID");
+            String title = resultSet.getString("Title");
+            String description = resultSet.getString("Description");
+            String loc = resultSet.getString("Location");
+            String type = resultSet.getString("Type");
+            LocalDate startDate = resultSet.getDate("Start").toLocalDate();
+            LocalDateTime startTime = resultSet.getTimestamp("Start").toLocalDateTime();
+            LocalDate endDate = resultSet.getDate("End").toLocalDate();
+            LocalDateTime endTime = resultSet.getTimestamp("End").toLocalDateTime();
+            Integer custID = resultSet.getInt("Customer_ID");
+            Integer userID = resultSet.getInt("User_ID");
+            Integer contactID = resultSet.getInt("Contact_ID");
+            String contact = resultSet.getString("Contact_Name");
+            ZonedDateTime time1 = resultSet.getTimestamp("Start").toInstant().atZone(ZoneId.systemDefault());
+            ZonedDateTime time2 = resultSet.getTimestamp("End").toInstant().atZone(ZoneId.systemDefault());
+
+            int zhours = time1.getHour();
+            int zminutes = time1.getMinute();
+            String ztime;
+            String ztime2;
+            if (zhours < 10) {
+                ztime = "0" + String.valueOf(zhours);
+            } else {
+                ztime = String.valueOf(zhours);
+            }
+
+            if (zminutes == 0) {
+                ztime2 = "00";
+            } else {
+                ztime2 = String.valueOf(zminutes);
+            }
+
+            String zzz = ztime + ":" + ztime2;
+
+            int qhours = time2.getHour();
+            int qminutes = time2.getMinute();
+            String qtime;
+            String qtime2;
+
+            if (qhours < 10) {
+                qtime = "0" + (zhours);
+            } else {
+                qtime = String.valueOf(qhours);
+            }
+
+            if (qminutes == 0) {
+                qtime2 = "00";
+            } else {
+                qtime2 = String.valueOf(qminutes);
+            }
+            String qqq = qtime + ":" + qtime2;
+            String stringStart = zzz;
+            String stringEnd = qqq;
+
+            appointment = new Appointment(apptID, title, description, loc, type, startDate, stringStart, stringEnd, startTime, endDate, endTime, custID, userID, contactID, contact);
+
+        }
+        return appointment;
+
+    }
+
     public static void newAppointment(String contactName, String title, String description, String loc, String type, LocalDateTime start, String stringStart, String stringEnd, LocalDateTime end, Integer customerID, Integer userID ) throws SQLException {
 
         Contact contact = ContactsQuery.getContactID(contactName);
