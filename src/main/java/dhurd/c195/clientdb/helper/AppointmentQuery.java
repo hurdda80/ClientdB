@@ -357,5 +357,14 @@ public class AppointmentQuery {
 
     }
 
+    public static void deleteAppointmentByCustomerID (Integer customerID) throws SQLException {
+        String sql = "DELETE from appointments WHERE Customer_ID=?";
+        PreparedStatement preparedStatement = JDBC.connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1, customerID);
+
+        preparedStatement.execute();
+    }
+
 }
 

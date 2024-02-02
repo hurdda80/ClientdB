@@ -218,7 +218,10 @@ public class MainController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete Customer?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                AppointmentQuery.deleteAppointmentByCustomerID(id);
                 CustomerQuery.deleteCustomer(id);
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "Customer and all associated appointments deleted.");
+                alert1.showAndWait();
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 900, 600);
                 Stage stage = (Stage) custTable.getScene().getWindow();

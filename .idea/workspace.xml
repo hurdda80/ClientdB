@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1eaad783-5c13-4b0e-8459-c05a499b51e9" name="Changes" comment="Added appointment deletion functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/UpdateAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dhurd/c195/clientdb/helper/AppointmentQuery.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706288809100</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added appointment deletion functionality">
+      <option name="closed" value="true" />
+      <created>1706733061369</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1706733061369</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
